@@ -1,0 +1,48 @@
+<div class="newjobform">
+    <div class="newJobDetails">
+        <form action="/postnewjob" method="post">
+            <div class="form-group" >
+                <select class="form-control" name="jobcategory" id="exampleFormControlSelect1" required>
+                <option disabled selected>select job category</option>
+                <%categories.forEach((eachCategory)=>{%>
+                    <option><%=eachCategory%></option>
+                <%})%>
+                </select>
+            </div>
+            <div class="form-group" >
+                <select class="form-control" name="jobdesignation" id="exampleFormControlSelect2" required>
+                <option disabled selected>select job designation</option>
+                <%locals.designation.forEach((eachDesignation)=>{%>
+                    <option><%=eachDesignation%></option>
+                <%})%>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Enter Job Location</label>
+                <input required type="text" class="form-control" name="joblocation" id="exampleFormControlInput1" >
+              </div>
+              <div class="input-group">
+                <span class=" input-group-text" id="basic-addon1">Company Name</span>
+                <input required type="text" class="form-control" name="companyName" id="exampleFormControlInput2">
+                </div>
+                <div class="input-group m-3">
+                    <input required type="text" class="form-control" name="salary" placeholder="enter salary"  aria-label="Username" aria-describedby="basic-addon1">
+                    <span class=" input-group-text"  id="basic-addon1">Total Positions</span>
+                    <input required type="number" name="openings" class="form-control" id="exampleFormControlInput3" min="1" >
+                    </div>
+                    <div class="form-group">
+                    <label for="exampleFormControlSelect2">select skills required for the job</label>
+                    <select required multiple class="form-control" name="skills" id="exampleFormControlSelect2" >
+                        <%skills.forEach((eachSkill)=>{%>
+                            <option><%=eachSkill%></option>
+                        <%})%>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                    <label for="exampleFormControlInput2">Apply By</label>
+                    <input required type="date" class="form-control" name="date" id="exampleFormControlInput2">
+                    <button type="submit" class="btn btn-success m-3">Submit</button>
+                  </div>
+        </form>
+    </div>
+</div>

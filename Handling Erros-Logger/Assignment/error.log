@@ -1,0 +1,3 @@
+{"level":"error","message":"TimeStamp:Wed, 14 Aug 2024 17:05:11 GMT req URL:/test-unhandled-error error msg:Oops! Something went wrong... Please try again later!","service":"user-service"}
+{"h":"skndkl","level":"error","message":"TimeStamp:Wed, 14 Aug 2024 17:05:36 GMT req URL:/test-unhandled-error error msg:Oops! Something went wrong... Please try again later!","service":"user-service"}
+{"level":"error","message":"TimeStamp:Wed, 14 Aug 2024 17:06:10 GMT req URL:/test-custom-error error msg:testing app level custom error handling middleware","service":"user-service"}

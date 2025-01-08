@@ -1,0 +1,3 @@
+Wed, 14 Aug 2024 15:31:10 GMT
+req URL:/api/user/register
+reqBody:{"name":"vivek","email":"krvivi28@gmail.com","password":"vivek28@"}

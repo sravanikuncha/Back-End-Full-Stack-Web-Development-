@@ -1,0 +1,440 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "version":"1.0.0",
+        "description":"RESAPIs for PostAway Application",
+        "title":"Post Away APIs"
+    },
+    "servers":[
+        {
+            "url":"http://localhost:3000"
+        }
+    ],
+
+    "components":
+    {
+        "securitySchemes":
+        {
+            "cookieAuth":
+            {
+                "in":"cookie",
+                "name":"token",
+                "type": "apiKey"
+            }
+        }
+    },
+
+    "paths":
+    {
+        "/api/signup": {
+            "post":
+            {
+                "tags": ["Users"],
+                "summary":"SignUp",
+                "description":"User SignUp to register",
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name":{
+                                        "type":"string"
+                                    },
+                                    "email":{
+                                        "type": "string"
+                                    },
+                                    "password":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":
+                {
+                    "200": {
+                        "description":"OK"
+                    }
+                }
+            }
+        },
+
+        "/api/signin": 
+        {
+            "post":
+            {
+                "tags": ["Users"],
+                "summary":"SignIn",
+                "description":"User login to get token",
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email":{
+                                        "type": "string"
+                                    },
+                                    "password":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200": {
+                        "description":"OK"
+                    },
+                    "400": {
+                        "description": "Incorrect Credentials"
+                    }
+                }
+            }
+        },
+        "/api/posts/": {
+            "post": {
+             "tags": ["Posts"],
+              "summary": "Create New Post",
+             "requestBody":{
+                "content":{
+                    "multipart/form-data":{
+                        "schema":{
+                            "type":"object",
+                            "properties":{
+                                "caption":{
+                                    "type":"string"
+                                },
+                                "imageUrl":{
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "collectionFormat": "multi"
+                                }
+                            }   
+                        }
+                    }
+                }
+             },
+              "responses": {
+                "201": {
+                  "description": "Post Created"
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        },
+        "/api/posts/all": {
+            "get": {
+             "tags": ["Posts"],
+              "summary": "Get All Posts",
+              "responses": {
+                "200": {
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        },
+        "/api/posts/{id}": {
+            "get": {
+             "tags": ["Posts"],
+              "summary": "Get Posts By ID",
+               "parameters": [
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "description": "PostId",
+                    "required": true,
+                    "schema": {
+                      "type": "integer",
+                      "format": "int64"
+                    }
+                  }
+                ],
+              "responses": {
+                "200": {
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         },
+         "put": {
+            "tags": ["Posts"],
+             "summary": "Update Post By Id",
+             "parameters": [
+               {
+                 "name": "id",
+                 "in": "path",
+                 "description": "PostId",
+                 "required": true,
+                 "schema": {
+                   "type": "integer",
+                   "format": "int64"
+                 }
+               }
+             ],
+            "requestBody":{
+               "content":{
+                   "multipart/form-data":{
+                       "schema":{
+                           "type":"object",
+                           "properties":{
+                               "caption":{
+                                   "type":"string"
+                               },
+                               "imageUrl":{
+                                   "type": "array",
+                                   "items": {
+                                       "type": "string",
+                                       "format": "binary"
+                                   },
+                                   "collectionFormat": "multi"
+                               }
+                           }   
+                       }
+                   }
+               }
+            },
+             "responses": {
+               "201": {
+                 "description": "Post Created"
+               }
+             },
+             "security":{
+               "cookieAuth":[]
+           }
+        },
+        "delete": {
+            "tags": ["Posts"],
+             "summary": "Delete Posts By User",
+             "parameters": [
+               {
+                 "name": "id",
+                 "in": "path",
+                 "description": "PostId",
+                 "required": true,
+                 "schema": {
+                   "type": "integer",
+                   "format": "int64"
+                 }
+               }
+             ],
+             "responses": {
+               "200": {
+               }
+             },
+             "security":{
+               "cookieAuth":[]
+           }
+        }
+        },
+        "/api/posts": {
+            "get": {
+             "tags": ["Posts"],
+              "summary": "Get Posts By User",
+              "responses": {
+                "200": {
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        },
+
+        "/api/comments/{id}": {
+            "get":{
+                "tags": ["Comments"],
+                "summary": "Get Comments For a Post",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "PostId",
+                      "required": true,
+                      "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                      }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    }
+                  }
+            },
+            "post":{
+                "tags": ["Comments"],
+                "summary": "Add Comments For a Post",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "PostId",
+                      "required": true,
+                      "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                      }
+                    }
+                ],
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "content":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                    }
+                  }
+            },
+            "put":{
+                "tags": ["Comments"],
+                "summary": "Update Particular COmment For a Post",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "commentId",
+                      "required": true,
+                      "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                      }
+                    }
+                ],
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "content":{
+                                        "type": "string"
+                                    },
+                                    "postId":{
+                                        "type": "integer",
+                                         "format": "int64"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                    }
+                  }
+            },
+            "delete":{
+                "tags": ["Comments"],
+                "summary": "Delete Particular COmment For a Post",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "commentId",
+                      "required": true,
+                      "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                      }
+                    }
+                ],
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "postId":{
+                                        "type": "integer",
+                                         "format": "int64"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                    }
+                  }
+            }
+           
+        },
+        "/api/likes/{postid}":{
+            "get":{
+                "tags": ["Likes"],
+                "summary": "Get Likes For a Post",
+                "parameters": [
+                    {
+                      "name": "postid",
+                      "in": "path",
+                      "description": "PostId",
+                      "required": true,
+                      "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                      }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    }
+                  }
+            }
+        },
+        "/api/likes/toggle/{postid}":{
+            "put":{
+                "tags": ["Likes"],
+                "summary": "Toggle Like For a Post",
+                "parameters": [
+                    {
+                      "name": "postid",
+                      "in": "path",
+                      "description": "PostId",
+                      "required": true,
+                      "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                      }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    }
+                  }
+            }
+        }
+    }
+}

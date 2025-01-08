@@ -1,0 +1,4 @@
+{"level":"info","message":"Wed, 14 Aug 2024 16:00:43 GMT\nreq Url:/api/user/register\nreqBody [object Object]","service":"user-service"}
+{"level":"info","message":"Wed, 14 Aug 2024 16:01:21 GMT\nreq Url:/api/user/register\nreqBody [object Object]","service":"user-service"}
+{"level":"info","message":"Wed, 14 Aug 2024 16:01:58 GMT\n req Url:/api/user/register\n reqBody [object Object]","service":"user-service"}
+{"level":"info","message":"Wed, 14 Aug 2024 16:02:37 GMT \n req Url:/api/user/register \n reqBody {\"name\":\"vivek\",\"email\":\"krvivi28@gmail.com\",\"password\":\"vivek28@\"}","service":"user-service"}

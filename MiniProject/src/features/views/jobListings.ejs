@@ -1,0 +1,25 @@
+<div class="jobCards">
+  <%jobsDetails.forEach((eachDetail)=>{%>
+    <div class="card" style="width: 20rem;">
+      <div class="card-body">
+        <div class="hiringDiv mb-2">
+          <span class="textColorWhite">Actively hiring</span>
+          <i class="fa-solid fa-chart-line textColorWhite"></i>
+        </div>
+        <h5 class="tectColorYellow" class="card-title"><%=eachDetail.companyName%></h5>
+        <p class="card-text textColorWhite"><%=eachDetail.jobcategory%> <span class="tectColorYellow"><%=eachDetail.jobdesignation%></span></p>
+        <div class="m-2">
+        <h6 class="textColorWhite"><i class="fa-solid fa-location-dot textColorWhite"></i><%=eachDetail.joblocation%></h6>
+        <h5><i class="fa-solid fa-indian-rupee-sign textColorWhite"></i><span class="textColorWhite"><%=eachDetail.salary%></span></h5>
+        <div class="jobskills" >
+          <%eachDetail.skills.forEach((eachSkill)=>{%>
+            <a type="button" class="btn btn-outline-primary"><%=eachSkill%></a>
+            <%})%>
+        </div>
+        <a role="button" class="btn btn-outline-success detailsList" href="/viewJobDetail/<%=eachDetail.id%>">View Details</a>
+      </div>
+      </div>
+    </div>
+  <%})%>
+</div>
+  

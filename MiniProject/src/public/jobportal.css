@@ -1,0 +1,219 @@
+.navbarimg{
+    background-color: #131a43 !important;
+}
+
+.textColor{
+    color: rgba(255, 255, 255, 0.771) !important;
+}
+
+
+/* landingpage css */
+.landingpage{
+    height: 89%;
+    background-image: url(../assets/landingpage.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.jobdetails{
+   position: absolute;
+   width: 50%;
+   color: white;
+   left: 15%;
+   top: 20%;
+}
+
+.jobdetails h1{
+    color: pink;
+    margin-bottom: 1.8rem;
+}
+
+.jobdetails h3{
+    color: antiquewhite;
+}
+
+.jobdetails a{
+    margin-top: 1.2rem;
+    margin-left: 0.5rem;
+}
+
+
+/* loginpage */
+.loginForm{
+    width: 50%;
+    position: relative;
+    left: 20%;
+    top:10%;
+    border:1px solid #131a43;
+    box-shadow: 8px 0px 10px 2px rgb(99, 97, 97);
+    border-radius: 2%;
+    display: flex;
+}
+
+.loginFormColor{
+    opacity: 0.8;
+}
+
+.formStyle{
+    width: 89%;
+}
+/* jobspage css */
+
+.jobCards{
+    background-color:#030c3fcc;
+    display: flex;
+    flex-wrap: wrap;
+    height: 89%;
+    justify-content: space-around;
+}
+
+.card{
+    margin-top: 3%;
+    height: 70% !important;
+    border :1px solid white;
+    background-color: #16215e;
+}
+
+.hiringDiv{
+    width: 60%;
+    border:1px solid white;
+    padding: 0.2rem;
+    padding: 2px;
+    background-color:#131a43 ;
+}
+
+.textColorWhite{
+    color: white !important;
+}
+
+.tectColorYellow{
+    color:yellow;
+}
+
+.jobskills{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 1.6rem;
+}
+
+.jobskills a{
+    margin:0.1rem;
+}
+
+.detailsList{
+    margin-top: 1rem;
+    width: 95% !important;
+}
+
+/* viewDetails css */
+.textColorPink{
+    color:rgb(230, 92, 115)
+}
+
+
+.viewDetailscard{
+    background-color: white;
+}
+
+.viewDetailscard i{
+    margin-bottom: 0.4rem;
+}
+
+.viewDetailsCardMain{
+    border:1px solid rgba(0, 0, 0, 0.341);
+    height: auto !important;
+}
+
+.viewDetailscard .card-title{
+    text-align: center !important;
+    margin-left: 8%;
+}
+
+
+.postedDiv{
+    background-color: green;
+    color: white;
+    width: 15rem;
+    border-radius: 0.6rem;
+    padding: 0.3rem;
+}
+
+
+/* apply job css */
+.applyhtml{
+    margin:5%;
+    width: 80% !important;
+    border: 1px solid rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 5px 3px  black;
+}
+
+
+/* post new job css */
+
+.newjobform{
+    width: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.526);
+    position: relative;
+    left: 20%;
+    top:5%;
+    border-radius: 1rem;
+    box-shadow: 0px 7px 4px 3px black;
+    margin-bottom: 5%;
+}
+
+.newJobDetails{
+    margin: 1rem;
+}
+
+.newJobDetails .form-group{
+    margin: 1rem;
+}
+
+.newJobDetails .input-group{
+    margin-left: 0.8rem;
+    width: 95%;
+}
+
+.newJobDetails button{
+    width: 95%;
+}
+
+
+.editClass{
+    margin-left: 0.5rem;
+}
+
+/* error css */
+
+.errorClass{
+    background-color: #16215e;
+    height: 100vh;
+}
+
+.textColorRed{
+    color: rgb(96, 6, 6);
+}
+
+
+.sizeClass{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.errorClass div{
+    position: relative;
+    top:40%;
+}
+
+.errorClass span{
+    margin-left: 40%;
+}
+
+
+/* applicants class */
+.applicants{
+    width: 60%;
+    margin-left: 15%;
+}

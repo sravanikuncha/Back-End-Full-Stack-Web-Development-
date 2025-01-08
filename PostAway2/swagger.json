@@ -1,0 +1,869 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "version":"1.0.0",
+        "description":"RESAPIs for PostAway2 Application",
+        "title":"Post Away2 APIs"
+    },
+    "servers":[
+        {
+            "url":"http://localhost:3000"
+        }
+    ],
+
+    "components":
+    {
+        "securitySchemes":
+        {
+            "cookieAuth":
+            {
+                "in":"cookie",
+                "name":"token",
+                "type": "apiKey"
+            }
+        }
+    },
+
+    "paths":
+    {
+        "/api/users/signup": {
+            "post":
+            {
+                "tags": ["Users"],
+                "summary":"SignUp",
+                "description":"User SignUp to register",
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "multipart/form-data":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "name":{
+                                        "type":"string",
+                                        "required": true
+                                    },
+                                    "email":{
+                                        "type":"string",
+                                        "required": true
+                                    },
+                                    "gender":{
+                                        "type":"string",
+                                        "required": true
+                                    },
+                                    "password":{
+                                        "type":"string",
+                                        "required": true
+                                    },
+                                    "avatar":{
+                                "type": "string",
+                                "format": "binary"
+                              }
+                                    }
+                                }   
+                            }
+                        }
+                    },
+                "responses":
+                {
+                    "201": {
+                        "description":"user registration successful"
+                    }
+                }
+            }
+        },
+
+        "/api/users/signin": 
+        {
+            "post":
+            {
+                "tags": ["Users"],
+                "summary":"SignIn",
+                "description":"User login and get token",
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email":{
+                                        "type": "string"
+                                    },
+                                    "password":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200": {
+                        "description":"Logged in Successfully"
+                    },
+                    "400": {
+                        "description": "Invalid Credentials"
+                    }
+                },
+                "security":{
+                    "cookieAuth":[]
+                }
+            }
+        },
+
+        "/api/users/logout": 
+        {
+            "post":
+            {
+                "tags": ["Users"],
+                "summary":"Logout",
+                "description":"User logout",
+                "responses":{
+                    "200": {
+                        "description":"Logged out Successfully"
+                    },
+                    "401": {
+                        "description": "Unauthorised"
+                    }
+                },
+                "security": [
+  {
+    "cookieAuth": []
+  }
+]
+            }
+        },
+
+        "/api/users/logout-all-devices": 
+        {
+            "post":
+            {
+                "tags": ["Users"],
+                "summary":"Logout",
+                "description":"User logout From All Devices",
+                "responses":{
+                    "200": {
+                        "description":"Logout From All devices successful"
+                    },
+                    "401": {
+                        "description": "Unauthorised"
+                    }
+                },
+                "security": [
+  {
+    "cookieAuth": []
+  }
+]
+            }
+        },
+
+        "/api/users/get-details/{userId}": 
+        {
+            "get":
+            {
+                "tags": ["Users"],
+                "summary":"Get User Details",
+                "description":"User Details",
+                "parameters": [
+                    {
+                      "name": "userId",
+                      "in": "path",
+                      "description": "User Id",
+                      "required": true,
+                      "schema": {
+                        "type": "string",
+                        "format": "objectid"
+                      }
+                    }
+                  ],
+                "responses":{
+                    "401": {
+                        "description": "Unauthorised"
+                    }
+                },
+                "security":{
+                    "cookieAuth":[]
+                }
+            }
+        },
+
+        "/api/users/get-all-details": 
+        {
+            "get":
+            {
+                "tags": ["Users"],
+                "summary":"Get All User Details",
+                "description":"All user Details",
+                "responses":{
+                    "401": {
+                        "description": "Unauthorised"
+                    }
+                },
+                "security":{
+                    "cookieAuth":[]
+                }
+            }
+        },
+
+        "/api/users/update-details/{userId}":{
+        "put": {
+            "tags": ["Users"],
+             "summary": "Update User Details",
+             "parameters": [
+               {
+                 "name": "userId",
+                 "in": "path",
+                 "description": "userId",
+                 "required": true,
+                 "schema": {
+                    "type": "string",
+                        "format": "objectid"
+                 }
+               }
+             ],
+            "requestBody":{
+               "content":{
+                   "multipart/form-data":{
+                       "schema":{
+                           "type":"object",
+                           "properties":{
+                               "name":{
+                                   "type":"string"
+                               },
+                               "email":{
+                                   "type":"string"
+                               },
+                               "gender":{
+                                   "type":"string"
+                               },
+                               "avatar":{
+                                "type": "string",
+                                "format": "binary"
+                              }
+                           }   
+                       }
+                   }
+               }
+            },
+             "responses": {
+               "200": {
+                 "description": "Updated User Successfully"
+               },
+               "401":{
+                 "description": "UnAuthorised"
+               }
+             },
+             "security":{
+               "cookieAuth":[]
+           }
+        }
+        },
+
+    
+        "/api/posts/": {
+            "post": {
+             "tags": ["Posts"],
+              "summary": "Create New Post",
+             "requestBody":{
+                "content":{
+                    "multipart/form-data":{
+                        "schema":{
+                            "type":"object",
+                            "properties":{
+                                "caption":{
+                                    "type":"string"
+                                },
+                                "avatar":{
+                                        "type": "string",
+                                        "format": "binary"
+                                }
+                            }   
+                        }
+                    }
+                }
+             },
+              "responses": {
+                "201": {
+                  "description": "Post Created successfully"
+                },
+                "401":{
+                    "description": "Unauthorised"
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        },
+
+        "/api/posts/all": {
+            "get": {
+             "tags": ["Posts"],
+              "summary": "Get All Posts",
+              "responses": {
+                "200": {
+                },
+                "401":{
+                    "description":"UnAuthorised"
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        },
+
+        "/api/posts/{postId}": {
+            "get": {
+             "tags": ["Posts"],
+              "summary": "Get Posts By ID",
+               "parameters": [
+                  {
+                    "name": "postId",
+                    "in": "path",
+                    "description": "PostId",
+                    "required": true,
+                    "schema": {
+                      "type": "string",
+                      "format": "objectid"
+                    }
+                  }
+                ],
+              "responses": {
+                "200": {
+                },
+                "401":{
+                    "description":"UnAuthorised"
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         },
+         "put": {
+            "tags": ["Posts"],
+             "summary": "Update Post By Id",
+             "parameters": [
+               {
+                 "name": "postId",
+                 "in": "path",
+                 "description": "PostId",
+                 "required": true,
+                 "schema": {
+                   "type": "string",
+                   "format": "objectid"
+                 }
+               }
+             ],
+            "requestBody":{
+               "content":{
+                   "multipart/form-data":{
+                       "schema":{
+                           "type":"object",
+                           "properties":{
+                               "caption":{
+                                   "type":"string"
+                               },
+                               "avatar":{
+                                       "type": "string",
+                                       "format": "binary"
+                               }
+                           }   
+                       }
+                   }
+               }
+            },
+             "responses": {
+               "201": {
+                 "description": "Post Created"
+               },
+               "401":{
+                    "description":"UnAuthorised"
+                }
+             },
+             "security":{
+               "cookieAuth":[]
+           }
+        },
+        "delete": {
+            "tags": ["Posts"],
+             "summary": "Delete Posts By User",
+             "parameters": [
+               {
+                 "name": "postId",
+                 "in": "path",
+                 "description": "PostId",
+                 "required": true,
+                 "schema": {
+                   "type": "string",
+                   "format": "objectid"
+                 }
+               }
+             ],
+             "responses": {
+               "200": {
+               },
+               "401":{
+                "description":"UnAuthorised"
+               }
+             },
+             "security":{
+               "cookieAuth":[]
+           }
+        }
+        },
+        
+        "/api/posts/user/{userId}": {
+            "get": {
+             "tags": ["Posts"],
+              "summary": "Get Posts By User",
+              "parameters": [
+                {
+                  "name": "userId",
+                  "in": "path",
+                  "description": "userId",
+                  "required": true,
+                  "schema": {
+                     "type": "string",
+                        "format": "objectid"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                },
+                "401":{"description":"UnAuthorised"}
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        },
+
+
+        "/api/comments/{id}": {
+            "get":{
+                "tags": ["Comments"],
+                "summary": "Get Comments For a Post",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "PostId",
+                      "required": true,
+                      "schema": {
+                       "type": "string",
+                        "format": "objectid"
+                      }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    },
+                    "401":{"description":"UnAuthorised"}
+                  },
+                  "security":{
+                    "cookieAuth":[]
+                }
+            },
+            "post":{
+                "tags": ["Comments"],
+                "summary": "Add Comments For a Post",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "PostId",
+                      "required": true,
+                      "schema": {
+                         "type": "string",
+                        "format": "objectid"
+                      }
+                    }
+                ],
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "comment":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                    },
+                    "401":{"description":"UnAuthorised"}
+                  },
+                  "security":{
+                    "cookieAuth":[]
+                }
+            },
+            "put":{
+                "tags": ["Comments"],
+                "summary": "Update Particular COmment For a Post",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "commentId",
+                      "required": true,
+                      "schema": {
+                       "type": "string",
+                        "format": "objectid"
+                      }
+                    }
+                ],
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "comment":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                    },
+                    "401":{"description":"UnAuthorised"}
+                  },
+                  "security":{
+                    "cookieAuth":[]
+                }
+            },
+            "delete":{
+                "tags": ["Comments"],
+                "summary": "Delete Particular COmment For a Post",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "commentId",
+                      "required": true,
+                      "schema": {
+                       "type": "string",
+                        "format": "objectid"
+                      }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                    }
+                  },
+                  "security":{
+                    "cookieAuth":[]
+                }
+            }
+        },
+
+
+        "/api/likes/{id}":{
+            "get":{
+                "tags": ["Likes"],
+                "summary": "Get Likes For a Post",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "id for post or comment",
+                      "required": true,
+                      "schema": {
+                        "type": "string",
+                        "format": "objectid"
+                      }
+                    },
+                    {
+                        "name": "Like",
+                        "in": "query",
+                        "description": "Like or Comment",
+                        "required": true,
+                        "schema": {
+                          "type": "String"
+                        }
+                      }
+                ],
+                "responses": {
+                    "200": {
+                    },
+                    "401":{
+                        "description":"UnAuthorised"
+                    }
+                  },
+                  "security":{
+                    "cookieAuth":[]
+                }
+            }
+        },
+
+        "/api/likes/toggle/{postid}":{
+            "put":{
+                "tags": ["Likes"],
+                "summary": "Toggle Like For a Post Or Comment",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "id of Post or Comment",
+                      "required": true,
+                      "schema": {
+                      "type": "string",
+                        "format": "objectid"
+                      }
+                    },
+                    {
+                        "name": "Like",
+                        "in": "query",
+                        "description": "Like or Comment",
+                        "required": true,
+                        "schema": {
+                          "type": "String"
+                        }
+                      }
+                ],
+                "responses": {
+                    "200": {
+                    },
+                    "401":{"description":"UnAuthorised"}
+                  },
+                  "security":{
+                    "cookieAuth":[]
+                }
+            }
+        },
+
+
+        "/api/friends/get-friends/{userId}": {
+            "get": {
+             "tags": ["Friends"],
+              "summary": "Get Friends By User",
+               "parameters": [
+                  {
+                    "name": "userId",
+                    "in": "path",
+                    "description": "userId",
+                    "required": true,
+                    "schema": {
+                       "type": "string",
+                        "format": "objectid"
+                    }
+                  }
+                ],
+              "responses": {
+                "200": {
+                },
+                "401":{
+                    "description":"UnAuthorised"
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        },
+
+         "/api/friends/get-pending-requests": {
+            "get": {
+             "tags": ["Friends"],
+              "summary": "Get Pending Requests of User",
+              "responses": {
+                "200": {
+                },
+                "401":{
+                    "description":"UnAuthorised"
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        },
+
+        "/api/friends/toggle-friendship/{friendId}": {
+            "post": {
+             "tags": ["Friends"],
+              "summary": "UserId toggling the Request Sent by FriendId",
+               "parameters": [
+                  {
+                    "name": "friendId",
+                    "in": "path",
+                    "description": "friendId",
+                    "required": true,
+                    "schema": {
+                   "type": "string",
+                        "format": "objectid"
+                    }
+                  }
+                ],
+              "responses": {
+                "200": {
+                    "description":"Request Sent or Befriended Successfully"
+                },
+                "401":{
+                    "description":"UnAuthorised"
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        },
+
+        "/api/friends/response-to-request/{friendId}": {
+            "post": {
+             "tags": ["Friends"],
+              "summary": "UserId Accepting or Rejecting the Request Sent by FriendId Valid Values Accepted or Rejected",
+               "parameters": [
+                  {
+                    "name": "friendId",
+                    "in": "path",
+                    "description": "friendId",
+                    "required": true,
+                    "schema": {
+                    "type": "string",
+                        "format": "objectid"
+                    }
+                  }
+                ],
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "status":{
+                                        "type": "string",
+                                        "description":"Accepted or Rejected"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+              "responses": {
+                "200": {
+                    "description":"Friend Request Accepted or Friend Request Rejected"
+                },
+                "401":{
+                    "description":"UnAuthorised"
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        },
+
+        "/api/otp/send": {
+            "post": {
+             "tags": ["OTP"],
+              "summary": "Send OTP",
+              "responses": {
+                "200": {
+                    "description":"OTP Sent Successfully"
+                },
+                "401":{
+                    "description":"UnAuthorised"
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        },
+
+        "/api/otp/verify": {
+            "post": {
+             "tags": ["OTP"],
+              "summary": "verify OTP",
+              "requestBody":
+              {
+                  "content":
+                  {
+                      "application/json":{
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "otp":{
+                                      "type": "string"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                "200": {
+                    "description":"OTP verified Successfully"
+                },
+                "400":{
+                    "description":"Invalid OTP"
+                },
+                "401":{
+                    "description":"UnAuthorised"
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        },
+        
+        
+        "/api/otp/reset-password": {
+            "post": {
+             "tags": ["OTP"],
+              "summary": "Reset Password",
+              "requestBody":
+              {
+                  "content":
+                  {
+                      "application/json":{
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "newPassword":{
+                                      "type": "string"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                "200": {
+                    "description":"Password Updated Successfully"
+                },
+                "400":{
+                    "description":"Click Send OTP"
+                },
+                "401":{
+                    "description":"UnAuthorised"
+                }
+              },
+              "security":{
+                "cookieAuth":[]
+            }
+         }
+        }
+    }
+}

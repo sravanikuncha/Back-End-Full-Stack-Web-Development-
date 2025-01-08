@@ -1,0 +1,56 @@
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =1"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =1"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =1"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =1"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =2"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =2"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =2"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =2"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =2"}
+{"level":"info","message":"createNewPost userId=1 caption=Post2 nr of images uploaded =2"}
+{"level":"info","message":"getPostById id=1"}
+{"level":"info","message":"getPostById id=2"}
+{"level":"info","message":"getPostById userId=1"}
+{"level":"info","message":"updatePostById caption=Post1 Update nr of images uploaded =1"}
+{"level":"info","message":"getPostById id=1"}
+{"level":"info","message":"deletePostById id=1"}
+{"level":"info","message":"deletePostById id=1"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =2"}
+{"level":"info","message":"createNewPost userId=1 caption=Post2 nr of images uploaded =2"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =2"}
+{"level":"info","message":"createNewPost userId=1 caption=Post2 nr of images uploaded =2"}
+{"level":"info","message":"getAllCommentsForPost postId ={PostId} userId=1"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =2"}
+{"level":"info","message":"createNewPost userId=1 caption=Post2 nr of images uploaded =2"}
+{"level":"info","message":"updatePostById caption=Post1 Update nr of images uploaded =1"}
+{"level":"info","message":"deleteCommentForPostById postId =1 userId=1 commentId={commentId}"}
+{"level":"info","message":"deleteCommentForPostById postId =0 userId=1 commentId={commentId}"}
+{"level":"info","message":"updateCommentForPostById postId =1 userId=1 id={commentId} content=Comment Update For Post"}
+{"level":"info","message":"addCommentToPost postId ={PostId} userId=1 content=Coment Addition For Post1"}
+{"level":"info","message":"getAllCommentsForPost postId ={PostId} userId=1"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =1"}
+{"level":"info","message":"createNewPost userId=1 caption=Post2 nr of images uploaded =1"}
+{"level":"info","message":"getAllCommentsForPost postId =1 userId=1"}
+{"level":"info","message":"addCommentToPost postId =1 userId=1 content=COmment Added for Post1"}
+{"level":"info","message":"getAllCommentsForPost postId =1 userId=1"}
+{"level":"info","message":"addCommentToPost postId =2 userId=1 content=COmment Added for Post2"}
+{"level":"info","message":"getAllCommentsForPost postId =1 userId=1"}
+{"level":"info","message":"getAllCommentsForPost postId =2 userId=1"}
+{"level":"info","message":"updateCommentForPostById postId =1 userId=1 id=1 content=Comment Update for Post1"}
+{"level":"info","message":"updateCommentForPostById postId =1 userId=1 id=3 content=Comment Update for Post1"}
+{"level":"info","message":"getAllCommentsForPost postId =1 userId=1"}
+{"level":"info","message":"deleteCommentForPostById postId =1 userId=1 commentId=1"}
+{"level":"info","message":"deleteCommentForPostById postId =2 userId=1 commentId=1"}
+{"level":"info","message":"deleteCommentForPostById postId =3 userId=1 commentId=1"}
+{"level":"info","message":"deleteCommentForPostById postId =2 userId=1 commentId=1"}
+{"level":"info","message":"createNewPost userId=1 caption=Post2 nr of images uploaded =1"}
+{"level":"info","message":"createNewPost userId=1 caption=Post1 nr of images uploaded =1"}
+{"level":"info","message":"createNewPost userId=1 caption=Post2 nr of images uploaded =1"}
+{"level":"info","message":"getLikesForPost userId=1 postId=1"}
+{"level":"info","message":"getLikesForPost userId=1 postId=2"}
+{"level":"info","message":"getLikesForPost userId=1 postId=3"}
+{"level":"info","message":"toggleLikeForPost userId=1 postId=1"}
+{"level":"info","message":"getLikesForPost userId=1 postId=1"}
+{"level":"info","message":"toggleLikeForPost userId=1 postId=1"}
+{"level":"info","message":"getLikesForPost userId=1 postId=1"}
+{"level":"info","message":"toggleLikeForPost userId=1 postId=3"}

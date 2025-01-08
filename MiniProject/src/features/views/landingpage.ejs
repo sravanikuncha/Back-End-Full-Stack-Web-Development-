@@ -1,0 +1,73 @@
+<div class="landingpage">
+    <div class="jobdetails">
+    <h1>A comprehensive platform for reliable </h1>
+    <h3>Job Opportunities and Internships</h3>
+    <h5>Get Discovered and hired</h5>
+    <a type="button" class="btn btn-success" href="/showJobsPage">I'm a Job Seeker</a>
+    <a type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#registerRecruiter">I'm a Recruiter</a>
+    </div>
+
+
+    <!-- register recruiter -->
+    <div class="modal fade" id="registerRecruiter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Experience Easily</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <%if(!locals.recruiterData){%>
+            <div class="modal-body">
+                <form action="/saveRecruiter" method="post">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Name</span>
+                        <input required type="text" class="form-control" name="recruitername" placeholder="enter your name" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Email</span>
+                        <input required type="email" class="form-control" name="recruiteremail" placeholder="enter your email" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Password</span>
+                        <input required type="password" class="form-control" name="recruiterpassword" placeholder="enter your password" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                    <button type="submit" class="btn btn-success">Register</button>
+                  </form>
+            </div>
+            <hr>
+            <%}%>
+            <h5>&nbsp;&nbsp;Already Registered
+                <a type="button" class="btn btn-outline-success"  data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#loginRecruiter">Login</a>
+            </h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- login Recruiter -->
+      <div class="modal fade" id="loginRecruiter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/loginRecruiter" method="post">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Email</span>
+                        <input type="email" class="form-control" name="recruiteremail" placeholder="enter your email" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Password</span>
+                        <input type="password" class="form-control" name="recruiterpassword" placeholder="enter your password" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                    <button type="submit" class="btn btn-success">Login</button>
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

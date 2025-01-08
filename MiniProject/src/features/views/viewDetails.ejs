@@ -1,0 +1,88 @@
+<div class="card viewDetailsCardMain" style="width: 90%; margin-left: 5%; margin-top: 1%;">
+    <a href="https://www.codingninjas.com/">
+    <img class="card-img-top" src="/assets/JobDetails.png"  alt="Card image cap">
+    </a>
+    <div class="card-body viewDetailscard">
+      <h1 class="card-title"><%=jobDetail.jobdesignation%> opertunity in <%=jobDetail.joblocation%> at <%=jobDetail.companyName%></h1>
+      <div class="hiringDiv mb-2" style="display:inline;">
+        <span class="textColorWhite">Actively hiring</span>
+        <i class="fa-solid fa-chart-line textColorWhite"></i>
+      </div>
+      <%if(locals.recruiterData.name){%>
+      <span class="editClass" >
+        <a href="/update/<%=jobDetail.id%>">
+          <i class="fa-solid fa-pen-to-square">
+          </i>
+        </a>
+      </span>
+      <span class="editClass" >
+        <a href="/delete/<%=jobDetail.id%>">
+            <i class="fa-solid fa-trash-can"></i>
+       </a>
+     </span>
+    <%}%>
+      <div class="m-1">
+        <h3><%=jobDetail.companyName%></h3>
+        <h5><%=jobDetail.jobcategory%> <%=jobDetail.jobdesignation%></h5>
+        <div class="m-3">
+        <i class="fa-solid fa-map-pin"></i>&nbsp;<span><%=jobDetail.joblocation%></span>
+        <br>
+        <i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<span><%=jobDetail.salary%></span>
+        <br>
+        <i class="fa-solid fa-hourglass-start"></i>&nbsp;<span>Apply By <%=jobDetail.date%></span>
+        <br>
+        <i class="fa-solid fa-chart-simple"></i>&nbsp;<span>Number of openings <%=jobDetail.openings%></span>
+        <br>
+        <i class="fa-solid fa-user-group textColorPink"></i>&nbsp;<a class="textColorPink" href="/applicants/<%=jobDetail.id%>">Applicants <%=jobDetail.applicants%></a>
+        <br>
+        <div class="jobskills" >
+          <%jobDetail.skills.forEach((eachSkill)=>{%>
+            <a class="btn btn-outline-primary"><%=eachSkill%></a>
+          <%})%>
+          </div>
+          <%if(jobDetail.openings>0){%>
+            <a class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#applyNow">Apply Now</a>
+          <%}%>
+      </div>
+      </div>
+      <div class="postedDiv">Posted: <%=jobDetail.postedon%></div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="applyNow" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">easily</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body applyhtml">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Apply in less than a minute</h1>
+            <br>
+            <form action="/applyJob" method="post" enctype="multipart/form-data">
+              <input type="text" name="jobid" value="<%=jobDetail.id%>" hidden/>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Name</span>
+                    <input type="text" class="form-control" name="username" placeholder="enter your name" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Email</span>
+                    <input type="email" class="form-control" name="useremail" placeholder="enter your email" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Contact</span>
+                    <input type="tel" class="form-control" name="usercontact" placeholder="91___________" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Resume</span>
+                    <input type="file" class="form-control" name="userresume"  accept=".pdf" aria-describedby="basic-addon1"/>
+                  </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+              </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+    </div>
+  </div>

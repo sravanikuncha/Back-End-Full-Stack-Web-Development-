@@ -1,0 +1,28 @@
+
+<div class="applicants">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Resume</th>
+      </tr>
+    </thead>
+    <tbody>
+        <%jobSeekers.forEach((eachjobSeeker)=>{%>
+            <tr>
+                <td><%=eachjobSeeker.id%></td>
+                <td><%=eachjobSeeker.username%></td>
+                <td><%=eachjobSeeker.useremail%></td>
+                <td><%=eachjobSeeker.usercontact%></td>
+                <td>
+                  <a class="btn btn-primary" target="_blank" href="<%=eachjobSeeker.filePathLocation%>">View</a>
+                </td>
+              </tr>
+        <%})%>
+     
+    </tbody>
+  </table>
+  </div>

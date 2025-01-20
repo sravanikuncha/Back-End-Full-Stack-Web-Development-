@@ -19,7 +19,9 @@ const apiDocs = JSON.parse(fs.readFileSync(path.resolve('./swagger.json'), 'utf8
 
 const server=express();
 
-server.use(cors());
+// server.use(cors());
+server.options('*', cors()); // Allow preflight requests for all routes
+
 
 server.use('/api-docs', swagger.serve, swagger.setup(apiDocs));
 

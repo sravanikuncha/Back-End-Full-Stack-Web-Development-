@@ -19,9 +19,9 @@ const apiDocs = JSON.parse(fs.readFileSync(path.resolve('./swagger.json'), 'utf8
 
 const server=express();
 
-server.use('/api-docs', swagger.serve, swagger.setup(apiDocs));
-
 server.use(cors());
+
+server.use('/api-docs', swagger.serve, swagger.setup(apiDocs));
 
 server.use(express.static('public'));
 

@@ -19,8 +19,13 @@ const apiDocs = JSON.parse(fs.readFileSync(path.resolve('./swagger.json'), 'utf8
 
 const server=express();
 
-// server.use(cors());
-server.options('*', cors()); // Allow preflight requests for all routes
+const corsOptions = {
+  origin: *,  // Change to the URL of your frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
+};
+
+server.use(cors(corsOptions));
 
 
 server.use('/api-docs', swagger.serve, swagger.setup(apiDocs));

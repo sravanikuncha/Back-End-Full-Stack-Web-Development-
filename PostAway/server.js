@@ -5,6 +5,8 @@ import cookieParser from "cookie-parser";
 import swagger from 'swagger-ui-express';
 import fs from 'fs';
 import path from 'path';
+import cors from 'cors';
+
 
 //user import
 import { userRouter } from "./src/features/routes/users.routes.js";
@@ -18,6 +20,8 @@ const apiDocs = JSON.parse(fs.readFileSync(path.resolve('./swagger.json'), 'utf8
 const server=express();
 
 server.use('/api-docs', swagger.serve, swagger.setup(apiDocs));
+
+server.use(cors());
 
 server.use(express.static('public'));
 

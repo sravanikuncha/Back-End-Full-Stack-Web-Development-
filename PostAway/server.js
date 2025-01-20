@@ -20,7 +20,7 @@ const apiDocs = JSON.parse(fs.readFileSync(path.resolve('./swagger.json'), 'utf8
 const server=express();
 
 const corsOptions = {
-  origin: '35.160.120.126','44.233.151.27','34.211.200.85',  // Change to the URL of your frontend
+  origin: ['35.160.120.126','44.233.151.27','34.211.200.85'],  // Change to the URL of your frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
 };

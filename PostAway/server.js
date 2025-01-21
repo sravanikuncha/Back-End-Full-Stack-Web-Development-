@@ -3,16 +3,23 @@ import ejs from "ejs";
 import expressLayouts  from "express-ejs-layouts"
 import cookieParser from "cookie-parser";
 import swagger from 'swagger-ui-express';
+import fs from 'fs';
+import path from 'path';
+import cors from 'cors';
+
 
 //user import
 import { userRouter } from "./src/features/routes/users.routes.js";
 import { postRouter } from "./src/features/routes/posts.routes.js";
 import { commentRouter } from "./src/features/routes/comments.routes.js";
 import { likeRouter } from "./src/features/routes/likes.routes.js";
-import apiDocs from './swagger.json' assert {type: 'json'};
+// import apiDocs from './swagger.json' assert {type: 'json'};
+const apiDocs = JSON.parse(fs.readFileSync(path.resolve('./swagger.json'), 'utf8'));
 
 
 const server=express();
+
+server.use(cors());
 
 server.use('/api-docs', swagger.serve, swagger.setup(apiDocs));
 

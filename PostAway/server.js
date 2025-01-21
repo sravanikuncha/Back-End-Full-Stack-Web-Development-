@@ -19,14 +19,7 @@ const apiDocs = JSON.parse(fs.readFileSync(path.resolve('./swagger.json'), 'utf8
 
 const server=express();
 
-const corsOptions = {
-  origin: ['http://localhost:3000'],  // Change to the URL of your frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
-};
-
-server.use(cors(corsOptions));
-
+server.use(cors());
 
 server.use('/api-docs', swagger.serve, swagger.setup(apiDocs));
 
